@@ -45,8 +45,13 @@ const Header = () => {
               executar tudo que precisa ser feito a curto prazo.
               <br />
               <br />
-              • Todas as tarefas que você inclui tem um prazo de 1 semana, toda
-              vez que você conclui dentro do prazo ganha pontos.
+              • A sua lista fica salva somente no seu navegador seja no celular
+              ou no computador, como não tem login cada dispositivo tem seu
+              próprio histórico de tarefas.
+              <br />
+              <br />
+              • Cada tarefa que incluida terá um prazo estipulado por você de
+              até uma semana
               <br />
               <br />
               • Todas as tarefas feitas depois de uma semana saem do Inicio e
@@ -54,11 +59,10 @@ const Header = () => {
               <br />
               <br />
               • Dentro de historico você pode ver as tarefas passadas concluidas
-              e também as que passaram do prazo.
+              com sucesso e também as que passaram do prazo.
               <br />
-              <br />• Tarefas que não forem cumpridas em 1 semana irão para o
-              Incompletos, cada tarefa que você não realiza no prazo te faz
-              perder pontos.
+              <br />• Tarefas que não forem cumpridas no prazo irão para os
+              incompletos.
             </>
           }
           aria-label="A tooltip"
