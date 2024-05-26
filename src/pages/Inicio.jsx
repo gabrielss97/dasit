@@ -76,7 +76,7 @@ export default function Inicio() {
         <VStack as="form" spacing={4} align="stretch" onSubmit={handleAddTask}>
           <HStack spacing={4}>
             <Input
-              placeholder="Escreva sua tarefa!"
+              placeholder="Anotar!"
               size="lg"
               flex="2"
               value={task}
