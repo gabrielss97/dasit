@@ -65,6 +65,7 @@ const Header = () => {
           p={4}
           borderRadius="md"
           boxShadow="md"
+          isOpen={isTooltipOpen}
         >
           <IconButton
             icon={<QuestionIcon />}
