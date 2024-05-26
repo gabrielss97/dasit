@@ -76,7 +76,7 @@ export default function Inicio() {
         <VStack as="form" spacing={4} align="stretch" onSubmit={handleAddTask}>
           <HStack spacing={4}>
             <Input
-              placeholder="O que você precisa fazer logo?"
+              placeholder="Escreva sua tarefa!"
               size="lg"
               flex="2"
               value={task}
@@ -106,6 +106,18 @@ export default function Inicio() {
           <Text fontSize="2xl" mb={4}>
             A fazer:
           </Text>
+          {tasks.length === 0 && (
+            <Box
+              p={4}
+              borderWidth={1}
+              borderRadius="md"
+              borderColor="gray.200"
+              color="gray.500"
+              textAlign="center"
+            >
+              Inclua uma tarefa
+            </Box>
+          )}
           <VStack spacing={4} align="stretch">
             {tasks.map((task, index) => (
               <TaskItem
@@ -121,6 +133,18 @@ export default function Inicio() {
           <Text fontSize="2xl" mb={4}>
             Feito:
           </Text>
+          {completedTasks.length === 0 && (
+            <Box
+              p={4}
+              borderWidth={1}
+              borderRadius="md"
+              borderColor="gray.200"
+              color="gray.500"
+              textAlign="center"
+            >
+              Nada feito ainda
+            </Box>
+          )}
           <VStack spacing={4} align="stretch">
             {completedTasks.map((task, index) => (
               <TaskItem key={index} task={task} completed />
