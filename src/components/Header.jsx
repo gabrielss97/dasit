@@ -15,9 +15,15 @@ import {
 } from "@chakra-ui/react";
 import { HamburgerIcon, QuestionIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const Header = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isTooltipOpen, setIsTooltipOpen] = useState(false);
+
+  const handleTooltipToggle = () => {
+    setIsTooltipOpen(!isTooltipOpen);
+  };
 
   return (
     <Box as="header" width="100%" padding="4" bg="white" boxShadow="sm">
@@ -65,6 +71,7 @@ const Header = () => {
             aria-label="Help"
             bg="transparent"
             _hover={{ bg: "gray.100" }}
+            onClick={handleTooltipToggle}
           />
         </Tooltip>
       </Flex>

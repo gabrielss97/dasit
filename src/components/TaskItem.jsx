@@ -2,6 +2,16 @@
 import { Checkbox, HStack, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 
+/**
+ * Componente que representa um item de tarefa.
+ *
+ * @param {Object} props.task - Objeto que representa a tarefa.
+ * @param {string} props.task.text - Texto da tarefa.
+ * @param {number} props.task.deadline - Prazo da tarefa em milissegundos.
+ * @param {boolean} props.task.completed - Indica se a tarefa está completa.
+ * @param {Function} props.onComplete - Função chamada quando a tarefa é marcada como completa.
+ * @param {boolean} props.completed - Indica se a tarefa está completa (usado para estilização).
+ */
 export default function TaskItem({ task, onComplete, completed }) {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft(task.deadline));
 
@@ -15,6 +25,12 @@ export default function TaskItem({ task, onComplete, completed }) {
     }
   }, [task.deadline, completed]);
 
+  /**
+   * Calcula o tempo restante até o prazo da tarefa.
+   *
+   * @param {number} deadline - Prazo da tarefa em milissegundos.
+   * @returns {Object} Objeto contendo o tempo restante em dias, horas, minutos e segundos.
+   */
   function calculateTimeLeft(deadline) {
     const difference = deadline - new Date().getTime();
     let timeLeft = {};
@@ -31,6 +47,12 @@ export default function TaskItem({ task, onComplete, completed }) {
     return timeLeft;
   }
 
+  /**
+   * Formata o tempo restante em uma string legível.
+   *
+   * @param {Object} timeLeft - Objeto contendo o tempo restante em dias, horas, minutos e segundos.
+   * @returns {string} String formatada representando o tempo restante.
+   */
   function formatTimeLeft(timeLeft) {
     if (
       timeLeft.days === 0 &&

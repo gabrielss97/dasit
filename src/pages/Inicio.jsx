@@ -33,6 +33,11 @@ export default function Inicio() {
     localStorage.setItem("completedTasks", JSON.stringify(completedTasks));
   }, [completedTasks]);
 
+  /**
+   * Adiciona uma nova tarefa à lista de tarefas.
+   *
+   * @param {Event} e - Evento de submissão do formulário.
+   */
   const handleAddTask = (e) => {
     e.preventDefault();
     if (task && deadline) {
@@ -40,7 +45,6 @@ export default function Inicio() {
         text: task,
         deadline: new Date().getTime() + deadline * 24 * 60 * 60 * 1000,
         completed: false,
-        onTime: null,
       };
       setTasks([...tasks, newTask]);
       setTask("");
@@ -48,6 +52,11 @@ export default function Inicio() {
     }
   };
 
+  /**
+   * Marca uma tarefa como completa e a move para a lista de tarefas concluídas.
+   *
+   * @param {number} index - Índice da tarefa a ser marcada como completa.
+   */
   const handleCompleteTask = (index) => {
     const newTasks = tasks.map((task, i) => ({
       ...task,
