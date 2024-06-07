@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import Header from "../components/Header";
 import TaskItem from "../components/TaskItem";
+import supabase from "../utils/supabase";
 
 export default function Inicio() {
   const [task, setTask] = useState("");
@@ -23,6 +24,20 @@ export default function Inicio() {
       JSON.parse(localStorage.getItem("completedTasks")) || [];
     return storedCompletedTasks;
   });
+  const [todos, setTodos] = useState([]);
+
+  useEffect(() => {
+    async function getTodos() {
+      const { data: todos } = await supabase.from("todos").select();
+      console.log(todos);
+
+      if (todos.length > 1) {
+        setTodos(todos);
+      }
+    }
+
+    getTodos();
+  }, []);
 
   // Salvar tarefas no localStorage sempre que a lista de tarefas mudar
   useEffect(() => {
@@ -106,6 +121,9 @@ export default function Inicio() {
           <Text fontSize="2xl" mb={4}>
             A fazer:
           </Text>
+          {todos.map((todo) => (
+            <TaskItem key={todo.id} task={todo} />
+          ))}
           {tasks.length === 0 && (
             <Box
               p={4}
